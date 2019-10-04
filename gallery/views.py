@@ -7,4 +7,8 @@ import datetime as dt
 def index(request):
     title = 'MyGallery'
     today = dt.datetime.today()
-    return render(request, 'index.html', {"title": title, "today": today})
+    param = {
+        "title": title,
+        "today": today
+    }
+    return render(request, 'index.html', param)
