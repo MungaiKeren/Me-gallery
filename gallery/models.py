@@ -24,5 +24,19 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     image_description = models.TextField()
 
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_image(self):
+        self.update_image()
+
+    @classmethod
+    def get_images(cls):
+        images = Image.objects.all()
+        return images
+
     def __str__(self):
         return self.image_name

@@ -3,4 +3,16 @@
 {{block.super}}
 <h1 class="text-center">Hello just wait I'm posting some photos in a few</h1>
 <p>{{today}}</p>
+<!--displaying all images-->
+<div class="container">
+    <div class="row">
+        {%for image in all_images%}
+        <img src="{{image.image.url}}" height="200px" class="rounded img-responsive" alt="image">
+        <h5>{{image.image_name}}</h5>
+        <h5>{{image.image_description}}</h5>
+        {% empty %}
+        <h1 class="bg-primary">No Images have been posted yet</h1>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
