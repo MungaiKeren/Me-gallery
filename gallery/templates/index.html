@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {{block.super}}
-<h1 class="text-center">Hello just wait I'm posting some photos in a few</h1>
 <p>{{today}}</p>
 <!--displaying all images-->
 <div class="container">
@@ -60,6 +59,9 @@
             <img src="{{image.image.url}}" class="rounded img-responsive" alt="{{image.name}}">
             <h5>{{image.image_name}}</h5>
             <h5>{{image.image_description}}</h5>
+            <p class="text-muted">
+               Category: ~{{image.img_category}}~
+                <br>Location: ~{{image.img_location}}~</p>
         </div>
         <div class="col-md-6">
 
