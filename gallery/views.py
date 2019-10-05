@@ -21,23 +21,27 @@ def index(request):
     return render(request, 'index.html', param)
 
 
-def display_location(request, img_location__id):
+def display_location(request, img_location_id):
     locations = Location.get_location()
-    found_locations = Image.objects.filter(img_location__id=img_location__id)
+    all_images = Image.get_images()
+    found_locations = Image.objects.filter(img_location__id=img_location_id)
     param = {
         "locations": locations,
         "found_locations": found_locations,
+        "all_images": all_images
     }
     return render(request, 'locations.html', param)
 
 
-def category(request):
+def category(request, img_category_id):
     categorize = Category.get_all_categories()
     locations = Location.get_location()
     all_images = Image.get_images()
+    found_categories = Image.objects.filter(img_category__id=img_category_id)
     param = {
         "categorize": categorize,
         "locations": locations,
-        "all_images": all_images
+        "all_images": all_images,
+        "found_categories": found_categories
     }
     return render(request, 'category.html', param)
