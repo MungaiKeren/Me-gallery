@@ -51,6 +51,8 @@ class Image(models.Model):
     image = models.ImageField(upload_to='pic_folder/')
     image_name = models.CharField(max_length=30)
     image_description = models.TextField()
+    img_location = models.ForeignKey(Location)
+    img_category = models.ForeignKey(Category)
 
     def save_image(self):
         self.save()
