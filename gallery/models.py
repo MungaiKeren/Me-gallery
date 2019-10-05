@@ -68,18 +68,20 @@ class Image(models.Model):
         images = Image.objects.all()
         return images
 
-    @classmethod
-    def get_by_location(cls, location_id):
-        image_location = Image.objects.filter_by(location__id=location_id)
-        return image_location
-
-    @classmethod
-    def get_by_category(cls, category_id):
-        image_category = Image.objects.filter_by(category__id=category_id)
-        return image_category
+    # @classmethod
+    # def get_by_location(cls, location_id):
+    #     image_location = Image.objects.filter_by(location__id=location_id)
+    #     return image_location
+    #
+    # @classmethod
+    # def get_by_category(cls, category_id):
+    #     image_category = Image.objects.filter_by(category__id=category_id)
+    #     return image_category
 
     class Meta:
         ordering = ['image']
 
     def __str__(self):
         return self.image_name
+
+
