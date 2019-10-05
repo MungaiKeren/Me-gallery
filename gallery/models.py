@@ -38,5 +38,7 @@ class Image(models.Model):
         images = Image.objects.all()
         return images
 
+    class Meta:
+        ordering = ['-image']
     def __str__(self):
         return self.image_name
