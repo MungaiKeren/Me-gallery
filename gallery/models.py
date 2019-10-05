@@ -5,12 +5,40 @@ from django.db import models
 class Location(models.Model):
     location = models.CharField(max_length=20)
 
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    def update_location(self):
+        self.update_location()
+
+    @classmethod
+    def get_location(cls):
+        place = Location.objects.all()
+        return place
+
     def __str__(self):
         return self.location
 
 
 class Category(models.Model):
     category = models.CharField(max_length=20)
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    def update_category(self):
+        self.update_category()
+
+    @classmethod
+    def get_all_categories(cls):
+        all_categories = Category.objects.all()
+        return all_categories
 
     def __str__(self):
         return self.category
@@ -39,6 +67,7 @@ class Image(models.Model):
         return images
 
     class Meta:
-        ordering = ['-image']
+        ordering = ['image']
+
     def __str__(self):
         return self.image_name

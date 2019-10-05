@@ -55,15 +55,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="card-columns">
         {%for image in all_images%}
-        <img src="{{image.image.url}}" class="rounded img-responsive" alt="{{image.name}}">
-        <h5>{{image.image_name}}</h5>
-        <h5>{{image.image_description}}</h5>
-        {% empty %}
-        <h1 class="bg-primary">No Images have been posted yet</h1>
-        {% endfor %}
+        <div class="col-md-6">
+            <img src="{{image.image.url}}" class="rounded img-responsive" alt="{{image.name}}">
+            <h5>{{image.image_name}}</h5>
+            <h5>{{image.image_description}}</h5>
         </div>
+        <div class="col-md-6">
+
+        </div>
+        {% empty %}
+        <h1 class="bg-primary text-center">No Images have been posted yet</h1>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
