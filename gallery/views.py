@@ -48,7 +48,8 @@ def category(request, img_category_id):
 
 
 def search_results(request):
-    
+    locations = Location.get_location()
+    all_images = Image.get_images()
     if 'category' in request.GET and request.GET['category']:
         search_term = request.GET.get('category')
         searched_category = Category.search_by_category(search_term)
@@ -56,9 +57,10 @@ def search_results(request):
         param = {
             "message": message,
             "categories": searched_category,
-
+            "locations": locations,
+            "all_images": all_images
         }
         return render(request, 'search.html', param)
     else:
         message = "You haven't searched for any categories"
-        return render(request, "index.html", {"message": message})
+        return render(request, 'index.html', {"message": message})
