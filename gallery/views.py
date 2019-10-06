@@ -9,17 +9,19 @@ def index(request):
     title = 'MyGallery'
     today = dt.datetime.today()
     all_images = Image.get_images()
+    locations = Location.get_location()
     param = {
         "title": title,
         "today": today,
         "all_images": all_images,
+        "locations": locations,
     }
     return render(request, 'index.html', param)
 
 
-def display_location(request, img_location_id):
+def display_location(request, id):
     locations = Location.get_location()
-    images = Image.objects.filter(img_location__id=img_location_id)
+    images = Image.objects.filter(img_location__id=id)
     param = {
         "locations": locations,
         "images": images

@@ -6,28 +6,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-2">
+        <div class="col-md-4">
             <h6>Sort by Location:</h6>
-            <form action="">
-                 <select class="form-control" name="" id="">
-                    <option value="" label="-----"></option>
-                    <a href="">
-                        <option value="" label="Road"></option>
-                    </a>
-                    <a href="">
-                        <option value="" label="Sea"></option>
-                    </a>
-                    <a href="">
-                        <option value="" label="Space"></option>
-                    </a>
-                    <a href="">
-                        <option value="" label="Wild"></option>
-                    </a>
-                    <a href="">
-                        <option value="" label="Magic World"></option>
-                    </a>
+            {% for location in locations%}
+            <a href="{% url 'display_location' location.id%}">
+                <select name="" id="">
+                    <option value="" label="{{location.location}}"></option>
                 </select>
-            </form>
+            </a>
+            {% endfor %}
         </div>
     </div>
 <div class="container">
