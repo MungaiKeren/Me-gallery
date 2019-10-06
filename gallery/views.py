@@ -45,3 +45,20 @@ def category(request, img_category_id):
         "found_categories": found_categories
     }
     return render(request, 'category.html', param)
+
+
+def search_results(request):
+    
+    if 'category' in request.GET and request.GET['category']:
+        search_term = request.GET.get('category')
+        searched_category = Category.search_by_category(search_term)
+        message = f"{search_term}"
+        param = {
+            "message": message,
+            "categories": searched_category,
+
+        }
+        return render(request, 'search.html', param)
+    else:
+        message = "You haven't searched for any categories"
+        return render(request, "index.html", {"message": message})

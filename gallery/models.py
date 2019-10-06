@@ -40,6 +40,11 @@ class Category(models.Model):
         all_categories = Category.objects.all()
         return all_categories
 
+    @classmethod
+    def search_by_category(cls, search_term):
+        category = cls.objects.filter(category__icontains=search_term)
+        return category
+
     def __str__(self):
         return self.category
 
