@@ -19,12 +19,10 @@ def index(request):
 
 def display_location(request, img_location_id):
     locations = Location.get_location()
-    all_images = Image.get_images()
-    found_locations = Image.objects.filter(img_location__id=img_location_id)
+    images = Image.objects.filter(img_location__id=img_location_id)
     param = {
         "locations": locations,
-        "found_locations": found_locations,
-        "all_images": all_images
+        "images": images
     }
     return render(request, 'locations.html', param)
 
@@ -38,11 +36,20 @@ def category(request, img_category_id):
 
 
 def search_results(request):
+    locations = Location.get_location()
+    images = Image.objects.all()
     if 'category' in request.GET and request.GET["category"]:
         search_term = request.GET.get("category")
-        searched_images = Image.search_by_category(search_term)
+        searched_category = Category.search_by_category(search_term)
+        message = f"{search_term}"
         params = {
-            "images": searched_images,
-            "message": search_term
+            "message": message,
+            "category": searched_category,
+            "images": images,
+            "locations": locations
         }
         return render(request, 'search.html', params)
+
+    else:
+        message = "Search not found"
+        return render(request, 'index.html', {"message": message, "locations": locations})

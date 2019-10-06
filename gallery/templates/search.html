@@ -3,11 +3,11 @@
 {{block.super}}
 <div class="container">
     <div class="row">
-        {%if categories%}
+        {% for image in images %}
+        {% if message == image.category.category %}
         <h2>Found {{images|length }} of searched category {{message}}</h2>
-        {%for image in images%}
         <div class="col-md-4 col-sm-6 col-lg-6 col-xs-6">
-            <img src="{{image.image_url.url}}" class="rounded img-responsive" alt="category image">
+            <img src="{{image.image.url}}" class="img-fluid" data-target="#{{image.id}}" alt="category image">
         </div>
         {% endfor %}
         {%else%}

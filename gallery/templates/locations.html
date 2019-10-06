@@ -1,11 +1,9 @@
-{%extends 'base.html'%}
-{%block content%}
-{{block.super}}
+{% extends 'base.html' %}
+{% block content %}
+{{ block.super }}
 <div class="container">
-    <div class="row">
-        <h1>This shows location for {{locations.location}}</h1>
-        {%for image in all_images%}
-        <div class="col-md-6">
+    {% for image in images %}
+    <div class="col-md-6">
             <img src="{{image.image.url}}" class="rounded img-responsive" alt="{{image.name}}">
             <h5>{{image.image_name}}</h5>
             <h5>{{image.image_description}}</h5>
@@ -13,9 +11,6 @@
                Category: ~{{image.img_category}}~
                 <br>Location: ~{{image.img_location}}~</p>
         </div>
-        {% empty %}
-        <h1 class="text-center">No Images have been posted for this location</h1>
-        {% endfor %}
-    </div>
+    {% endfor %}
 </div>
-{% endblock%}
+{% endblock %}

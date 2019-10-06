@@ -16,7 +16,7 @@ class Location(models.Model):
 
     @classmethod
     def get_location(cls):
-        place = Location.objects.all()
+        place = cls.objects.all()
         return place
 
     def __str__(self):
@@ -35,13 +35,13 @@ class Category(models.Model):
     def update_category(self):
         self.update_category()
 
+    @classmethod
+    def search_by_category(cls, search_term):
+        category = cls.objects.filter(category__icontains=search_term)
+        return category
+
     def __str__(self):
         return self.category
-
-    @classmethod
-    def get_all_categories(cls):
-        all_categories = Category.objects.all()
-        return all_categories
 
 
 class Image(models.Model):
@@ -58,7 +58,7 @@ class Image(models.Model):
         return self.image_name
 
     class Meta:
-        ordering = ['image']
+        ordering = ['-image']
 
     def save_image(self):
         self.save()
@@ -71,14 +71,10 @@ class Image(models.Model):
 
     @classmethod
     def get_images(cls):
-        images = Image.objects.all()
+        images = cls.objects.all()
         return images
 
     @classmethod
-    def search_by_category(cls, search_term):
-        images = cls.objects.filter(Category__category__icontains=search_term)
-        if len(images) < 1:
-            case_images = cls.objects.filter(Category__category__icontains=search_term.capitalize())
-            return case_images
-        else:
-            return images
+    def get_image_by_id(cls, id):
+        img_id = cls.objects.get(pk=id)
+        return img_id
