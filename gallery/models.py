@@ -35,13 +35,13 @@ class Category(models.Model):
     def update_category(self):
         self.update_category()
 
+    def __str__(self):
+        return self.category
+
     @classmethod
     def get_all_categories(cls):
         all_categories = Category.objects.all()
         return all_categories
-
-    def __str__(self):
-        return self.category
 
 
 class Image(models.Model):
@@ -53,6 +53,12 @@ class Image(models.Model):
     image_description = models.TextField()
     img_location = models.ForeignKey(Location)
     img_category = models.ForeignKey(Category)
+
+    def __str__(self):
+        return self.image_name
+
+    class Meta:
+        ordering = ['image']
 
     def save_image(self):
         self.save()
@@ -70,10 +76,9 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls, search_term):
-        images = cls.objects.filter(Category__category__contains=search_term)
-
-    class Meta:
-        ordering = ['image']
-
-    def __str__(self):
-        return self.image_name
+        images = cls.objects.filter(Category__category__icontains=search_term)
+        if len(images) < 1:
+            case_images = cls.objects.filter(Category__category__icontains=search_term.capitalize())
+            return case_images
+        else:
+            return images

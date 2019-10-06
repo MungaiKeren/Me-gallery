@@ -25,6 +25,6 @@ You need to have the following installed:
 ### Running the server
 ```python manage.py runserver```
 
-### 
+###
 LICENSE
 [MIT](https://github.com/MungaiKeren/Me-gallery/blob/master/LICENSE)
