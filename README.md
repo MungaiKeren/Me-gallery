@@ -22,6 +22,20 @@ You need to have the following installed:
 * Django 1.11.5 ```(virtual)$ pip install django==1.11.5```
 * Get all requirements ```pip freeze > requirements.txt```
 
+### Running the server
+```python manage.py runserver```
+
+# Behaviour Driven Development
+
+| Input        | Output           | Behavior  |
+| ------------- |:-------------:| -----:|
+| Visit Me-gallery site| Various gallery images are displayed  | User can other people's pitches |
+| Click on image| Image expand with details displayed | Image details displayed |
+| Search category | Images in category are displayed | App gets the images in the searched category |
+| Click on location on the nav | Images in location are displayed | App gets images in that location |
+| Visit Admin | Prompts for admin credentials | Admin dashboard displayed |
+
+
 ## Technologies used
 * Django a python frame-work
 * Javascript
@@ -44,8 +58,6 @@ Currently the app is deployed to heroku. You can find it [here](https://me-galle
 ## Known Bugs
 The application
 
-### Running the server
-```python manage.py runserver```
 
 ## Visual Representation
 <img src="https://github.com/MungaiKeren/My-Shoe-images/blob/master/me%20gallery.png?raw=true" height = "400px">
