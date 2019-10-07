@@ -2,17 +2,15 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-    <div class="row">
-        {% for image in images %}
-        {% if message == image.category.category %}
-        <h2>Found {{images|length }} of searched category {{message}}</h2>
-        <div class="col-md-4 col-sm-6 col-lg-6 col-xs-6">
-            <img src="{{image.image.url}}" class="img-fluid" data-target="#{{image.id}}" alt="category image">
-        </div>
-        {% endfor %}
-        {%else%}
-        <h2>Found 0 categories of searched category {{message}}</h2>
+    {% for image in images %}
+    <div class="col-md-6">
+            <img src="{{image.image.url}}" class="rounded img-responsive" alt="{{image.name}}">
+            <h5>{{image.image_name}}</h5>
+            <h5>{{image.image_description}}</h5>
+            <p class="text-muted">
+               Category: ~{{image.img_category}}~
+                <br>Location: ~{{image.img_location}}~</p>
     </div>
-    {% endif %}
+    {% endfor %}
 </div>
 {%endblock%}

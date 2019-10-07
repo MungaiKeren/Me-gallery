@@ -35,11 +35,6 @@ class Category(models.Model):
     def update_category(self):
         self.update_category()
 
-    @classmethod
-    def search_by_category(cls, search_term):
-        category = cls.objects.filter(category__icontains=search_term)
-        return category
-
     def __str__(self):
         return self.category
 
@@ -78,3 +73,8 @@ class Image(models.Model):
     def get_image_by_id(cls, id):
         img_id = cls.objects.get(pk=id)
         return img_id
+
+    @classmethod
+    def search_by_category(cls, search_term):
+        category = cls.objects.filter(category__img_category__icontains=search_term)
+        return category
