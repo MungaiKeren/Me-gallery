@@ -9,7 +9,14 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Gallery</a>
-    </div>
+      </div>
+    
+       {% for location in locations%}
+      <a href="{% url 'display_location' location.id%}" class="drop-down">
+        <p>{{location.location}}</p>
+      </a>
+      {% endfor %}
+
     <!-- add search bar-->
     <div class="col-sm-4 col-md-4 navbar-right">
       <form class="navbar-form" role="search" action="{% url 'search_results' %}">
